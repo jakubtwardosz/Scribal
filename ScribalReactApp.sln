@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34511.84
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScribalReactApp.Server", "ScribalReactApp.Server\ScribalReactApp.Server.csproj", "{A6E75594-75FB-498E-BBEA-2EEBD0D9C260}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "scribalreactapp.client", "scribalreactapp.client\scribalreactapp.client.esproj", "{8A125E49-76F0-4799-B278-5908311F8171}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A6E75594-75FB-498E-BBEA-2EEBD0D9C260}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6E75594-75FB-498E-BBEA-2EEBD0D9C260}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6E75594-75FB-498E-BBEA-2EEBD0D9C260}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6E75594-75FB-498E-BBEA-2EEBD0D9C260}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A125E49-76F0-4799-B278-5908311F8171}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A125E49-76F0-4799-B278-5908311F8171}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A125E49-76F0-4799-B278-5908311F8171}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{8A125E49-76F0-4799-B278-5908311F8171}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A125E49-76F0-4799-B278-5908311F8171}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A125E49-76F0-4799-B278-5908311F8171}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {93B79A98-FDAD-44BF-8B08-B1C6F7F01476}
+	EndGlobalSection
+EndGlobal

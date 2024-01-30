@@ -1,0 +1,6 @@
+@ScribalReactApp.Server_HostAddress = http://localhost:5213
+
+GET {{ScribalReactApp.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
