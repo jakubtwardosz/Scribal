@@ -1,49 +1,46 @@
-import { useEffect, useState } from 'react';
-import './App.css';
+import { useState } from 'react';
+import reactLogo from './assets/react.svg';
+import './App.scss';
+import { Button } from 'react-bootstrap';
 
 function App() {
-    const [forecasts, setForecasts] = useState();
-
-    useEffect(() => {
-        populateWeatherData();
-    }, []);
-
-    const contents = forecasts === undefined
-        ? <p><em>Loading... Please refresh once the ASP.NET backend has started. See <a href="https://aka.ms/jspsintegrationreact">https://aka.ms/jspsintegrationreact</a> for more details.</em></p>
-        : <table className="table table-striped" aria-labelledby="tabelLabel">
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Temp. (C)</th>
-                    <th>Temp. (F)</th>
-                    <th>Summary</th>
-                </tr>
-            </thead>
-            <tbody>
-                {forecasts.map(forecast =>
-                    <tr key={forecast.date}>
-                        <td>{forecast.date}</td>
-                        <td>{forecast.temperatureC}</td>
-                        <td>{forecast.temperatureF}</td>
-                        <td>{forecast.summary}</td>
-                    </tr>
-                )}
-            </tbody>
-        </table>;
+    const [count, setCount] = useState(0);
 
     return (
-        <div>
-            <h1 id="tabelLabel">Weather forecast</h1>
-            <p>This component demonstrates fetching data from the server.</p>
-            {contents}
+        <div className="App">
+            <div>
+                <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
+                    <img src="/vite.svg" className="logo" alt="Vite logo" />
+                </a>
+                <a href="https://reactjs.org" target="_blank" rel="noreferrer">
+                    <img src={reactLogo} className="logo react" alt="React logo" />
+                </a>
+            </div>
+            <h1>Vite + React with ypescript + Bootstrap 5</h1>
+            <div className="card">
+                <button onClick={() => setCount((count) => count + 1)}>
+                    count is {count}
+                </button>
+                <p>
+                    Edit <code>src/App.tsx</code> and save to test HMR
+                </p>
+            </div>
+            <p className="read-the-docs">
+                Click on the Vite and React logos to learn more
+            </p>
+            <Button variant="primary">Primary</Button>{' '}
+            <Button variant="secondary">Secondary</Button>{' '}
+            <Button variant="success">Success</Button>{' '}
+            <Button variant="warning">Warning</Button>{' '}
+            <Button variant="danger">Danger</Button>{' '}
+            <Button variant="info">Info</Button>{' '}
+            <Button variant="light">Light</Button>{' '}
+            <Button variant="dark">Dark</Button> <Button variant="link">Link</Button>
+
+            <div className="circle"></div>
+
         </div>
     );
-    
-    async function populateWeatherData() {
-        const response = await fetch('weatherforecast');
-        const data = await response.json();
-        setForecasts(data);
-    }
 }
 
 export default App;
