@@ -1,46 +1,39 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using System.Security.Cryptography;
+using System.Text;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using ScribalReactApp.Server.Models;
+using ScribalReactApp.Server.Data;
 using ScribalReactApp.Server.Servicies;
 
 namespace ScribalReactApp.Server.Controller.AuthController
 {
+    // Controller
     [ApiController]
     [Route("[controller]")]
     public class AuthController : ControllerBase
     {
-        private readonly IAuthService _authService;
-
-        public AuthController(IAuthService authService)
+        private readonly DataContext _context;
+        public AuthController(DataContext context)
         {
-            _authService = authService;
+            _context = context;
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register(UserForRegisterDto userForRegisterDto)
+        public async Task<ActionResult<User>> Register(RegisterDto registerDto)
         {
-            var userToCreate = new User
+            using var hmac = new HMACSHA512();
+
+            var user = new User
             {
-                Username = userForRegisterDto.Username
+                Username = registerDto.Username.ToLower(),
+                PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDto.Password)),
+                PasswordSalt = hmac.Key
             };
 
-            var createdUser = await _authService.Register(userToCreate, userForRegisterDto.Password);
+            _context.Users.Add(user);
+            await _context.SaveChangesAsync();
 
-            return StatusCode(201);
-        }
-
-        [HttpPost("login")]
-        public async Task<IActionResult> Login(UserForLoginDto userForLoginDto)
-        {
-            var userFromRepo = await _authService.Login(userForLoginDto.Username.ToLower(), userForLoginDto.Password);
-
-            if (userFromRepo == null)
-                return Unauthorized();
-
-            // Tutaj możesz dodać logikę generowania tokena JWT
-
-            return Ok();
+            return user;
         }
     }
-
 }

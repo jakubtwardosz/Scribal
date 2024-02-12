@@ -1,11 +1,12 @@
-﻿namespace ScribalReactApp.Server.Models
-{
-    public class User
-    {
-        public int Id { get; set; }
-        public string Username { get; set; }
-        public byte[] PasswordHash { get; set; }
-        public byte[] PasswordSalt { get; set; }
+﻿// Model
+using System.Security.Cryptography;
+using System.Text;
+using System.Threading.Tasks;
 
-    }
+public class User
+{
+    public int Id { get; set; }
+    public string Username { get; set; }
+    public byte[] PasswordHash { get; set; }
+    public byte[] PasswordSalt { get; set; }
 }

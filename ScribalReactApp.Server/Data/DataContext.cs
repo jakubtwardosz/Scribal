@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ScribalReactApp.Server.Models;
 using System.Collections.Generic;
 
 namespace ScribalReactApp.Server.Data
@@ -9,7 +8,9 @@ namespace ScribalReactApp.Server.Data
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
         public DbSet<User> Users { get; set; }
+ 
         // Dodaj tutaj inne DbSety dla innych modeli
+
     }
 
 }

@@ -1,7 +1,6 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
 using ScribalReactApp.Server.Data;
-using ScribalReactApp.Server.Models;
 using ScribalReactApp.Server.Servicies;
 
 namespace ScribalReactApp.Server.Servicies
