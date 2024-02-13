@@ -1,46 +1,66 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import './App.scss';
-import { Button } from 'react-bootstrap';
+// App.jsx
 
-function App() {
-    const [count, setCount] = useState(0);
+import React, { useState } from 'react';
+import { Form, Button } from 'react-bootstrap'; // Załóżmy, że używamy biblioteki react-bootstrap
+
+const App = () => {
+    const [formData, setFormData] = useState({
+        login: '',
+        password: '',
+    });
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // Tutaj możesz dodać logikę przesyłania danych przez API
+        console.log('Dane przesłane:', formData);
+    };
 
     return (
         <div className="App">
-            <div>
-                <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-                    <img src="/vite.svg" className="logo" alt="Vite logo" />
-                </a>
-                <a href="https://reactjs.org" target="_blank" rel="noreferrer">
-                    <img src={reactLogo} className="logo react" alt="React logo" />
-                </a>
-            </div>
-            <h1>Vite + React with ypescript + Bootstrap 5</h1>
-            <div className="card">
-                <button onClick={() => setCount((count) => count + 1)}>
-                    count is {count}
-                </button>
-                <p>
-                    Edit <code>src/App.tsx</code> and save to test HMR
-                </p>
-            </div>
-            <p className="read-the-docs">
-                Click on the Vite and React logos to learn more
-            </p>
-            <Button variant="primary">Primary</Button>{' '}
-            <Button variant="secondary">Secondary</Button>{' '}
-            <Button variant="success">Success</Button>{' '}
-            <Button variant="warning">Warning</Button>{' '}
-            <Button variant="danger">Danger</Button>{' '}
-            <Button variant="info">Info</Button>{' '}
-            <Button variant="light">Light</Button>{' '}
-            <Button variant="dark">Dark</Button> <Button variant="link">Link</Button>
+            <h1>Formularz rejestracyjny</h1>
+            <Form onSubmit={handleSubmit}>
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Label>Email address</Form.Label>
+                    <Form.Control
+                        type="email"
+                        placeholder="Enter email"
+                        name="login"
+                        value={formData.login}
+                        onChange={handleInputChange}
+                        required
+                    />
+                    <Form.Text className="text-muted">
+                        We'll never share your email with anyone else.
+                    </Form.Text>
+                </Form.Group>
 
-            <div className="circle"></div>
+                <Form.Group className="mb-3" controlId="formBasicPassword">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control
+                        type="password"
+                        placeholder="Password"
+                        name="password"
+                        value={formData.password}
+                        onChange={handleInputChange}
+                        required
+                    />
+                </Form.Group>
 
+                <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                    <Form.Check type="checkbox" label="Check me out" />
+                </Form.Group>
+
+                <Button variant="primary" type="submit">
+                    Submit
+                </Button>
+            </Form>
         </div>
     );
-}
+};
 
 export default App;
