@@ -1,7 +1,13 @@
-// App.jsx
+
+
+
 
 import React, { useState } from 'react';
-import { Form, Button } from 'react-bootstrap'; // Załóżmy, że używamy biblioteki react-bootstrap
+import { Form, Button, Container, Row, Col } from 'react-bootstrap'; // Załóżmy, że używamy biblioteki react-bootstrap
+import { BodyText } from 'react-bootstrap-icons';
+import './App.scss'; // Importuj plik SCSS
+
+
 
 const App = () => {
     const [formData, setFormData] = useState({
@@ -21,45 +27,53 @@ const App = () => {
     };
 
     return (
-        <div className="App">
-            <h1>Formularz rejestracyjny</h1>
-            <Form onSubmit={handleSubmit}>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control
-                        type="email"
-                        placeholder="Enter email"
-                        name="login"
-                        value={formData.login}
-                        onChange={handleInputChange}
-                        required
-                    />
-                    <Form.Text className="text-muted">
-                        We'll never share your email with anyone else.
-                    </Form.Text>
-                </Form.Group>
+        <Container>
+            <Row>
+                <Col>
+                    <div className="form-signin w-100 m-auto">
 
-                <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control
-                        type="password"
-                        placeholder="Password"
-                        name="password"
-                        value={formData.password}
-                        onChange={handleInputChange}
-                        required
-                    />
-                </Form.Group>
+                        <BodyText size={72} />
 
-                <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <Form.Check type="checkbox" label="Check me out" />
-                </Form.Group>
+                        <Form onSubmit={handleSubmit} className="mt-4">
+                                
+                                <h1 className="h3 mb-3 fw-normal">Zarejestruj się w Scribal</h1>
 
-                <Button variant="primary" type="submit">
-                    Submit
-                </Button>
-            </Form>
-        </div>
+                                <div className="form-floating">
+                                    <Form.Control
+                                        type="email"
+                                        placeholder="Enter email"
+                                        name="login"
+                                        value={formData.login}
+                                        onChange={handleInputChange}
+                                        required
+                                    />
+                                    <Form.Label>Email address</Form.Label>
+                                </div>
+
+                                <div className="form-floating">
+                                    <Form.Control
+                                        type="password"
+                                        placeholder="Enter password"
+                                        name="password"
+                                        value={formData.password}
+                                        onChange={handleInputChange}
+                                        required
+                                    />
+                                    <Form.Label>Password</Form.Label>
+                                </div>
+
+                                <Form.Group className="mb-3" controlId="checkbox mb-3">
+                                    <Form.Check type="checkbox" label="Remember me" />
+                                </Form.Group>
+
+                                <Button class="w-100 btn btn-lg btn-primary" variant="primary" type="submit">
+                                    Sign in
+                                </Button>
+                        </Form>
+                    </div>
+                </Col>
+            </Row>
+        </Container>
     );
 };
 
