@@ -1,10 +1,10 @@
 import { Container } from 'react-bootstrap';
-import MainMenu from './MainMenu';
+import BlogHeader from './BlogHeader';
 
 function Home() {
     return (
         <Container>
-            <MainMenu />
+            <BlogHeader />
         </Container>
     );
 }

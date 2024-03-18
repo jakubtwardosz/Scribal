@@ -2,7 +2,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import { Form, Button, Container} from 'react-bootstrap';
 import './App.scss';
-import MainMenu from "./MainMenu";
+import BlogHeader from './BlogHeader';
 
 function Register() {
     const [formData, setFormData] = useState({
@@ -38,7 +38,7 @@ function Register() {
 
     return (
         <Container>
-            <MainMenu></MainMenu>
+            <BlogHeader />
             <div className="form-signin w-100 m-auto">
                 <Form onSubmit={handleSubmit} className="mt-4">
                     <h1 className="h3 mb-3 fw-normal">Zarejestruj siê</h1>
